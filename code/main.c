@@ -1,29 +1,23 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
 
 int main()
 {
-    typedef enum name
+    FILE *fic = fopen("../ressources/test.txt", "r");
+    int lettre = 0;
+
+    if(fic == NULL)
     {
-        Jean,
-        Robert,
-        Simon,
-        Edward
-    } name;
+        exit(1);
+    }
 
-    typedef struct type_joueur
+    while (1)
     {
-        int hp;
-        int mp;
-        int age;
-        name nom;
-    } joueur;
+             
+    }
+    
 
-    printf("char : %d octets\n", sizeof(char));
-    printf("int : %d octets\n", sizeof(int));
-    printf("long : %d octets\n", sizeof(long));
-    printf("double : %d octets\n", sizeof(double));
-    printf("type joueur : %d octets\n", sizeof(joueur));
-
+    fclose(fic);
     return 0;
 }
