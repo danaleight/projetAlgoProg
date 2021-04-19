@@ -7,7 +7,7 @@ int main()
     FILE *fic = fopen("../ressources/test.txt", "r");
     int lettre = 0;
     int id = 0, num1 = 0, num2 = 0, num3 = 0, num4 = 0;
-    int ligneRestante = 2;
+    int ligneRestante = 10;
 
     if(fic == NULL)
     {
