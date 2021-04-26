@@ -6,11 +6,11 @@
         int lon;
         int lat;
         int nombre;
-        char adresse;
-        char ville;
+        char adresse[256];
+        char ville[256];
         int codePostal;
     } entreeCSV;
 
-    
+    void lectureFichierCSV();
 
 #endif

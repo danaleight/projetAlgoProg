@@ -1,24 +1,40 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+
 #include "lecture.h"
 
-void lectureFichierCSV(char adresse)
+void lectureFichierCSV()
 {
-    printf("efuie");
+    int limitesEntree = 5;
+    int i = 0;
+    entreeCSV *stockage = NULL;
+    signed char entree[1024];
+    char *entreeSeparee = NULL;
+    char trash[64];
 
-    FILE *fic = fopen(adresse, "r");
-    
+    FILE *fichier = fopen("../ressources/baseDeDonnee/france.csv", "r"); // creer un pointeur fichier contenant un flux (ici un fichier)
 
-    if(fic == NULL)
+    if(fichier == NULL)
     {
         exit(1); //si impossible de lire le fichier le programme s'arrête et renvoie l'erreur "1"
     }
 
-    while(1) //trouver la condition
+    stockage = malloc(limitesEntree * sizeof(entreeCSV));
+    printf("taille : %d, position : %d\n", sizeof(stockage), &stockage);
+
+    fgets()
+
+    while(!feof(fichier) && limitesEntree> 0) //trouver la condition
     {
-        fscanf(fic, "%d,%d,%d", &donnee1, &donnee2, &donnee3); //mettre le formatage du fichier ici : "donnée1SéparateurDonnée2....", &variableDonnée1, &variableDonnée2
-        printf("id : %d | %d | %d\n", donnee1, donnee2, donnee3);
+        //4.9356384,46.1290477,5098,lotissement vers le plat,,L'Abergement-Clémenciat,,,01400,,5f1f6c0bdb5c901c
+        
+        limitesEntree--;
+        i++;
     }
 
-    fclose(fic);
+    fclose(fichier);
 }
+
+//, stockage[i].adresse, stockage[i].ville, &stockage[i].codePostal
+//, stockage[i].adresse, stockage[i].ville, stockage[i].codePostal
