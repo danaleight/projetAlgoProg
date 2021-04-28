@@ -6,9 +6,7 @@
 
 int main()
 {
-    const char adresse[256] = "../ressources/test.txt";
-
-    lectureFichierCSV(adresse);
+    lectureFichierCSV();
     return 0;
 }
 

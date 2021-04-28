@@ -3,14 +3,16 @@
 
     typedef struct entreeCSV //structure qui permet de stocker les différentes valeurs d'une entree dans le fichier csv
     {
-        int lon;
-        int lat;
-        int nombre;
-        char adresse[256];
-        char ville[256];
-        int codePostal;
+        char *lon;
+        char *lat;
+        char *nombre;
+        char *adresse;
+        char *ville;
+        char *codePostal;
+        char *hash;
     } entreeCSV;
 
     void lectureFichierCSV();
+    char *strsep (char **stringp, const char *delim);
 
 #endif
