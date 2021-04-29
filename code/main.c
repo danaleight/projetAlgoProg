@@ -63,12 +63,20 @@ int plusPetit(entreeCSV *t, int taille, int i)
     return petit;
 }
 
-entreeCSV *triBreton(entreeCSV *t, int taille)
+entreeCSV *triBreton(entreeCSV *t, int taille, int interval, FILE *fic)
 {
+    clock_t start = clock();
+    clock_t end;
     entreeCSV *copieTab = t;
     for (int i = 0 ; i < taille; i++)
     {
         t[i] = copieTab[plusPetit(copieTab, taille, i)];
+        if (i % interval == 0)
+        {
+            end = clock();
+            fprintf(fic, "%d;%d\n", i, ((end - start) * 1000 / CLOCKS_PER_SEC));
+        }
+        
     }
     
     return t;
@@ -84,7 +92,7 @@ int main()
     entreeCSV *tabCopie = NULL;
 
     char entree[1024];
-    char *jeton, *reste;
+    char *jeton;
     const char separateurs[] = ":,;"; 
 
     char *menuChoixUn[] = {"1. Afficher", "2. Tri", "3. Quitter\n"};
@@ -147,7 +155,6 @@ int main()
         printf("\nDuree totale de la lecture : %d ms", dureeTotale);
     }
 
-    fclose(classeur);
     fclose(fichier);
 
     while(run)
@@ -169,7 +176,7 @@ int main()
             debutChrono = clock();
             if (choix == 1)
             {
-                triBreton(stockage, taille);
+                triBreton(stockage, taille, interval, classeur);
             }
 
             finChrono = clock();
@@ -183,6 +190,7 @@ int main()
     }
 
 
+    fclose(classeur);
     free(stockage);
 
     return 0;
